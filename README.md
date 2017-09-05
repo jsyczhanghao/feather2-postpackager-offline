@@ -41,3 +41,11 @@ module.exports = [
 ```sh
 feather2 release -d xxx
 ```
+
+注：js中引用图片时尽量不要使用__uri语法，而采用__inline转换为base64，原因因如果使用__uri后，js文件可能会被多个html文件引用，造成无法准确使用相对路径进行定位
+
+```js
+var img = new Image();
+img.src = __inline('./1.png'); //不要使用__uri('./1.png')
+document.body.appendChild(img);
+```
