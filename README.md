@@ -4,6 +4,10 @@ feather2的资源离线方案，可以用于app下的离线html等hybrid应用�
 
 ### 使用
 
+```sh
+npm install feather2-postpackager-offline
+```
+
 ```js
 //conf.js
 feather.config.get('postpackager').push('offline');
