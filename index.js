@@ -55,6 +55,8 @@ function replaceHtml(fileUrl, content){
         }
 
         return start + relative(fileUrl, url);
+    }).replace(/<head[^>]*>/, function(all){
+        return all + '<script>window.__URL__ = "' + fileUrl + '";</script>';
     });
 }
 
@@ -71,5 +73,13 @@ module.exports = function(ret){
             content = replaceHtml(file.subpath, content);
             file.setContent(content);
         }
-    })
+    });
+
+    if(feather.config.get('cli').watch){
+        var fjs = ret.pkg['/static/feather.js'];
+        var content = fjs.getContent();
+        var tpl = feather.util.read(__dirname + '/js.tpl');
+        content = tpl.replace('{{#featherjs#}}', content);
+        fjs.setContent(content);
+    }
 };

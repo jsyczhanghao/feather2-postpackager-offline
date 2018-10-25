@@ -1,6 +1,6 @@
 {
   "name": "feather2-postpackager-offline",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "feather2 离线插件",
   "main": "index.js",
   "scripts": {
